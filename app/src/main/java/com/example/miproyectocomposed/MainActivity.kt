@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -38,22 +40,26 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MiProyectoComposedTheme(){
-                MyMenu()
+                MyMenu(listOf("Sincronizar", "Contar"))
             }
         }
     }
 }
 
 @Composable
-fun MyMenu(){
+fun MyMenu(options : List<String>){
     ProvideTextStyle(value = MaterialTheme.typography.bodySmall) {
+        val scrollState = rememberScrollState()
         Column(horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.background(MaterialTheme.colorScheme.background).padding(8.dp)) {
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.background)
+            .padding(8.dp)
+            .verticalScroll(scrollState)) {
             MyImage()
-            Spacer(modifier = Modifier.height(8.dp))
-            MyButton("Sincronizar")
-            Spacer(modifier = Modifier.height(16.dp))
-            MyButton("Contar")
+            options.forEach(){
+                Spacer(modifier = Modifier.height(8.dp))
+                MyButton(it)
+            }
         }
     }
 }
@@ -72,12 +78,17 @@ fun MyButton(buttonText: String, modifier: Modifier = Modifier.padding(horizonta
 fun MyImage(){
     Image(painterResource(R.drawable.ic_launcher_foreground),
     "Mi imagen",
-    modifier = Modifier.size(30.dp).clip(CircleShape).background(MaterialTheme.colorScheme.onBackground))
+    modifier = Modifier
+        .size(30.dp)
+        .clip(CircleShape)
+        .background(MaterialTheme.colorScheme.onBackground))
 }
 
-//@Preview()
+@Preview(showSystemUi = true)
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun MenuPreview() {
-    MyMenu()
+    MyMenu(listOf("Sincronizar", "Contar", "Contar", "Contar", "Contar", "Contar", "Contar",
+        "Contar", "Contar", "Contar", "Contar", "Contar2", "Contar3", "Contar4", "Contar5",
+        "Contar6", "Contar7","Contar8", "Contar9"))
 }
