@@ -31,18 +31,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.miproyectocomposed.ui.theme.MiProyectoComposedTheme
 
+private val registersListInstance = listOf("Registro1",
+    "Registro2",
+    "Registro3",
+    "Registro4",
+    "Registro5",
+    "Registro6",
+    "Registro7",
+    "Registro8",
+    "Registro9",
+    "Registro10",
+    "Registro11",
+    "Registro12",
+    "Registro13",
+    "Registro14",
+    "Registro15",
+    "Registro16",
+    "Registro17",
+    "Registro18",
+    "Registro19")
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MiProyectoComposedTheme(){
-                RegistersList(listOf("Registro1", "Registro2"))
+                RegistersList(registersListInstance)
             }
         }
     }
 }
 
-@Composable
+/*@Composable
 fun MyMenu(options : List<String>){
     Column( // Usamos Column para colocar la imagen arriba y las opciones abajo
         modifier = Modifier
@@ -55,9 +75,9 @@ fun MyMenu(options : List<String>){
         Spacer(modifier = Modifier.height(16.dp))
         MyOptions(options)
     }
-}
+}*/
 
-@Composable
+/*@Composable
 fun MyOptions(options : List<String>){
     LazyColumn(modifier = Modifier
         .fillMaxWidth()
@@ -69,13 +89,12 @@ fun MyOptions(options : List<String>){
             MyButton(option)
         }
     }
-}
+}*/
 
 @Composable
 fun RegistersList(registerDetailList : List<String>){
     LazyColumn(modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp),
+        .fillMaxWidth(),
         horizontalAlignment = Alignment.Start
     ){
         items(registerDetailList){registerDetail ->
@@ -143,5 +162,5 @@ fun MyImage(){
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun RegistersListPreview() {
-    RegistersList(listOf("Registro1", "Registro2"))
+    RegistersList(registersListInstance)
 }
