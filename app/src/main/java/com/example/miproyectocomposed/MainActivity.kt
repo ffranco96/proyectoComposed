@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MiProyectoComposedTheme(){
-                MyMenu(listOf("Sincronizar", "Contar"))
+                RegistersList(listOf("Registro1", "Registro2"))
             }
         }
     }
@@ -56,8 +57,6 @@ fun MyMenu(options : List<String>){
     }
 }
 
-// LazyColumn funcionara similar a nuestro RecyclerView, reciclando las vistas
-// y dibujando solo las que estan presentes en pantalla
 @Composable
 fun MyOptions(options : List<String>){
     LazyColumn(modifier = Modifier
@@ -73,10 +72,36 @@ fun MyOptions(options : List<String>){
 }
 
 @Composable
+fun RegistersList(registerDetailList : List<String>){
+    LazyColumn(modifier = Modifier
+        .fillMaxWidth()
+        .height(200.dp),
+        horizontalAlignment = Alignment.Start
+    ){
+        items(registerDetailList){registerDetail ->
+            Spacer(modifier = Modifier.height(8.dp))
+            Register(registerDetail)
+        }
+    }
+}
+
+@Composable
 fun MyButton(buttonText: String, modifier: Modifier = Modifier.padding(horizontal = 20.dp)) {
     Button(onClick = { /*TODO*/ }, Modifier.fillMaxWidth(0.8f)) {
         Text(
             text = buttonText,
+            style = MaterialTheme.typography.labelLarge
+        )
+    }
+}
+
+@Composable
+fun Register(regText: String) {
+    Row(modifier = Modifier.background(MaterialTheme.colorScheme.background)
+        .padding(8.dp)) {
+        MyImage()
+        Text(
+            text = regText,
             style = MaterialTheme.typography.labelLarge
         )
     }
@@ -95,6 +120,6 @@ fun MyImage(){
 @Preview(showSystemUi = true)
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun MenuPreview() {
-    MyMenu(listOf("Sincronizar", "Contar"))
+fun RegistersListPreview() {
+    RegistersList(listOf("Registro1", "Registro2"))
 }
