@@ -100,11 +100,33 @@ fun Register(regText: String) {
     Row(modifier = Modifier.background(MaterialTheme.colorScheme.background)
         .padding(8.dp)) {
         MyImage()
-        Text(
-            text = regText,
-            style = MaterialTheme.typography.labelLarge
-        )
+        RegisterContent(regText)
     }
+}
+
+@Composable
+fun RegisterContent(regText: String) {
+    Column(modifier = Modifier.padding(start = 8.dp)) {
+        RegisterTitle(regText) /*TODO pasar title por parametro*/
+        Spacer( modifier = Modifier.height(16.dp))
+        RegisterDescription(regText) /*TODO pasar desc por parametro*/
+    }
+}
+
+@Composable
+fun RegisterTitle(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.labelLarge
+    )
+}
+
+@Composable
+fun RegisterDescription(desc: String) {
+    Text(
+        text = desc,
+        style = MaterialTheme.typography.labelMedium
+    )
 }
 
 @Composable
