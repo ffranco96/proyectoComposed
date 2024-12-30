@@ -77,20 +77,6 @@ fun MyMenu(options : List<String>){
     }
 }*/
 
-/*@Composable
-fun MyOptions(options : List<String>){
-    LazyColumn(modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-        ){
-        items(options){option ->
-            Spacer(modifier = Modifier.height(8.dp))
-            MyButton(option)
-        }
-    }
-}*/
-
 @Composable
 fun RegistersList(registerDetailList : List<String>){
     LazyColumn(modifier = Modifier
@@ -104,7 +90,7 @@ fun RegistersList(registerDetailList : List<String>){
     }
 }
 
-@Composable
+/*@Composable
 fun MyButton(buttonText: String, modifier: Modifier = Modifier.padding(horizontal = 20.dp)) {
     Button(onClick = { /*TODO*/ }, Modifier.fillMaxWidth(0.8f)) {
         Text(
@@ -112,7 +98,7 @@ fun MyButton(buttonText: String, modifier: Modifier = Modifier.padding(horizonta
             style = MaterialTheme.typography.labelLarge
         )
     }
-}
+}*/
 
 @Composable
 fun Register(regText: String) {
@@ -127,7 +113,6 @@ fun Register(regText: String) {
 fun RegisterContent(regText: String) {
     Column(modifier = Modifier.padding(start = 8.dp)) {
         RegisterTitle(regText) /*TODO pasar title por parametro*/
-        Spacer( modifier = Modifier.height(16.dp))
         RegisterDescription(regText) /*TODO pasar desc por parametro*/
     }
 }
