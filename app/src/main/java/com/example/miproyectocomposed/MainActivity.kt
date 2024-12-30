@@ -29,27 +29,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.miproyectocomposed.model.database.RegisterEntity
 import com.example.miproyectocomposed.ui.theme.MiProyectoComposedTheme
 
-private val registersListInstance = listOf("Registro1",
-    "Registro2",
-    "Registro3",
-    "Registro4",
-    "Registro5",
-    "Registro6",
-    "Registro7",
-    "Registro8",
-    "Registro9",
-    "Registro10",
-    "Registro11",
-    "Registro12",
-    "Registro13",
-    "Registro14",
-    "Registro15",
-    "Registro16",
-    "Registro17",
-    "Registro18",
-    "Registro19")
+private val registersListInstance = listOf(
+    RegisterEntity(-1000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-2000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-3000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-4000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-5000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-6000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-7000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-8000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-9000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-10000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-11000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-12000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") ,
+    RegisterEntity(-13000.00,"Club de la milanesa", "Pagamos a medias con mis amigos", "Restaurant y comida rapida", "2024-05-25", "ARS") )
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +74,7 @@ fun MyMenu(options : List<String>){
 }*/
 
 @Composable
-fun RegistersList(registerDetailList : List<String>){
+fun RegistersList(registerDetailList : List<RegisterEntity>){
     LazyColumn(modifier = Modifier
         .fillMaxWidth(),
         horizontalAlignment = Alignment.Start
@@ -101,19 +97,20 @@ fun MyButton(buttonText: String, modifier: Modifier = Modifier.padding(horizonta
 }*/
 
 @Composable
-fun Register(regText: String) {
+fun Register(regEntityData: RegisterEntity) {
+    val regTextData = listOf(regEntityData.title, regEntityData.description) // TODO Temporal
     Row(modifier = Modifier.background(MaterialTheme.colorScheme.background)
         .padding(8.dp)) {
         MyImage()
-        RegisterContent(regText)
+        RegisterContent(regTextData)
     }
 }
 
 @Composable
-fun RegisterContent(regText: String) {
+fun RegisterContent(regTextData: List<String>) {
     Column(modifier = Modifier.padding(start = 8.dp)) {
-        RegisterTitle(regText) /*TODO pasar title por parametro*/
-        RegisterDescription(regText) /*TODO pasar desc por parametro*/
+        RegisterTitle(regTextData[0]) /*TODO pasar title por parametro*/
+        RegisterDescription(regTextData[1]) /*TODO pasar desc por parametro*/
     }
 }
 
