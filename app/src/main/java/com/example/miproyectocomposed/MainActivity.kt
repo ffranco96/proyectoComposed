@@ -36,6 +36,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.miproyectocomposed.model.database.RegisterEntity
+import com.example.miproyectocomposed.navigation.AppNavigation
+import com.example.miproyectocomposed.screens.HomeStartScreen
 import com.example.miproyectocomposed.ui.theme.MiProyectoComposedTheme
 
 private val registersListInstance = listOf(
@@ -58,6 +60,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MiProyectoComposedTheme(){
+//                AppNavigation() // Sabe cual es la primera pantalla
                 RegistersList(registersListInstance)
             }
         }
@@ -160,6 +163,6 @@ fun MyImage(){
 @Preview(showSystemUi = true)
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun RegistersListPreview() {
-    RegistersList(registersListInstance)
+fun DefaultPreview(){
+    AppNavigation()
 }
